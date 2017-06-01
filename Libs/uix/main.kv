@@ -1,14 +1,12 @@
 #:kivy 1.10.0
 
-<JThemeView>:
-
-<WelcomeScreenSessionListItemView>:
+<WelcomeScreenSessionListItemView@RecycleDataViewBehavior+Widget>:
 # session general info
     filename: "fileName"
     patient_name: "patientName"
     filepath: "filePath"
 # default cell celected state
-    selected: 0
+    selected: False
     canvas.before:
         Color:
             rgba: (0.24, 0.54, 0.96, 1) if root.selected else (0.965, 0.965, 0.965, 1) # cell bg color

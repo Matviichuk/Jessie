@@ -1,0 +1,38 @@
+{
+  "current" : "default",
+  "themes" : {
+    "default" : {
+      "panel": {
+        "background_color": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "button": {
+        "selected": {
+          "background_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "text_color": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "unselected": {
+          "background_color": [
+
+          ]
+        }
+      }
+    }
+
+    }
+  }
+}
