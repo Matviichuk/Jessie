@@ -4,7 +4,7 @@ from kivy.uix.recycleview.views import RecycleDataViewBehavior
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
 from kivy.properties import BooleanProperty
-
+from .jThemeView import JThemeView
 kvFileOpenExistSessionButtonID = "openExistSessionButtonID"
 kvFileCreateNewSessionButtonID = "createNewSessionButtonID"
 
@@ -31,7 +31,7 @@ class WelcomeScreen(Screen):
         button.color = [0, 0, 0, 1]
     pass
 
-class WelcomeScreenSessionListItemView(RecycleDataViewBehavior, Widget):
+class WelcomeScreenSessionListItemView(RecycleDataViewBehavior, Widget, JThemeView):
     filename = StringProperty()
     patient_name = StringProperty()
     filepath = StringProperty()
