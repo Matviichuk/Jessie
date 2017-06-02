@@ -169,17 +169,19 @@
         BoxLayout:
             orientation: "vertical"
             Image:
-                size_hint: 1, .7
+                size_hint: 1, .6
                 source: root.image_source
             Label:
-                size_hint: 1, 0.3
+                size_hint: 1, 0.4
                 color: 0, 0, 0, 1
-                font_size: "24"
+                font_size: "26"
                 text: root.label_text
+
 
 <JSearchBar@Widget>:
 
     search_text: ""
+    hint_text: ""
     canvas:
         Color:
             rgba: 0.94, 0.94, 0.94, 1
@@ -193,8 +195,9 @@
         TextInput:
             id: SearchTextInput
             size_hint: None, 1
-            width: self.parent.width - (SearchBarClear.width if SearchBarClear.opacity else 0) #- SearchBarSearch.width
+            width: self.parent.width - (SearchBarClear.width if SearchBarClear.opacity else 0) - SearchBarSearch.width
             on_text: root.search_text = self.text
+            hint_text: root.hint_text
             multiline: False
         Button:
             id: SearchBarClear
@@ -204,13 +207,13 @@
             on_press: SearchTextInput.text = ""
             background_normal: 'Libs/Resources/JSearchBarClearIcon.png'
             border: 0, 0, 0, 0
-#        Button:
-#            id:SearchBarSearch
-#            size_hint: None, 1
-#            width: self.height
-#            enabled: 1 if root.search_text != "" else 0
-#            background_normal: 'Libs/Resources/JSearchBarSearchIcon.png'
-#            border: 0, 0, 0, 0
+        Button:
+            id:SearchBarSearch
+            size_hint: None, 1
+            width: self.height
+            enabled: 1 if root.search_text != "" else 0
+            background_normal: 'Libs/Resources/JSearchBarSearchIcon.png'
+            border: 0, 0, 0, 0
 
 <WorkspaceScreenMediaLibraryRecycleView@RecycleView>:
     canvas.before:
@@ -333,8 +336,8 @@
                 size_hint: None, None
                 height: (self.parent.height - MainMenuTabbedPanel.height)
                 width: 500
-                tab_height: 75
-                tab_width: 75
+                tab_height: 50
+                tab_width: 50
                 element_default_width: self.width
                 element_default_height: 50
                 tab_pos: 'top_mid'
@@ -351,6 +354,7 @@
                             id:MediaLibrarySearchBar
                             size_hint: 1, None
                             height: 50
+                            hint_text: "Filter"
                             on_search_text: print(self.search_text)
 
 
@@ -379,7 +383,7 @@
         AnchorLayout:
             canvas:
                 Color:
-                    rgba: 1, 0, 0, 0.5
+                    rgba: 0.4, .75, .83, 1
                 Rectangle:
                     size: self.size
                     pos: self.pos
