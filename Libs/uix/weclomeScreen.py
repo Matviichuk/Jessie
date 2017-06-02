@@ -15,6 +15,7 @@ class WelcomeScreen(Screen):
         button.background_color = [0.3, 0.3, 0.3, 1]
         button.color = [1, 1, 1, 1]
 
+
     def openExistSessionButtonReleased(self):
         button = self.ids[kvFileOpenExistSessionButtonID]
         button.background_color = [0.94, 0.94, 0.94, 1]

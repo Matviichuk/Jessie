@@ -85,7 +85,11 @@
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
-
+#############################################
+#                                           #
+#            WELCOME SCREEN                 #
+#                                           #
+#############################################
 <WelcomeScreen>:
     RelativeLayout:
         pos_hint: {'x': 0, 'y': 0}
@@ -146,5 +150,243 @@
                 background_color: 0.94, 0.94, 0.94, 1
                 text: 'open exist session'
                 color: 0, 0, 0, 1
-                on_press: root.openExistSessionButtonPressed()
-                on_release: root.openExistSessionButtonReleased()
+                on_press: app.route = "/workspace"
+
+
+
+#############################################
+#                                           #
+#               WORKSPACE SCREEN            #
+#                                           #
+#############################################
+
+<WorkspaceScreenTopTabBarItem@Button>:
+    label_text: ""
+    image_source: ""
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+        BoxLayout:
+            orientation: "vertical"
+            Image:
+                size_hint: 1, .7
+                source: root.image_source
+            Label:
+                size_hint: 1, 0.3
+                color: 0, 0, 0, 1
+                font_size: "24"
+                text: root.label_text
+
+<JSearchBar@Widget>:
+    canvas:
+        Color:
+            rgba: 0.94, 0.94, 0.94, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    textExist: True
+    BoxLayout:
+        size: self.parent.size
+        pos: self.parent.pos
+        orientation: "horizontal"
+        TextInput:
+            id: SearchTextInput
+            size_hint: None, 1
+            width: self.parent.width - (SearchBarClear.width if SearchBarClear.opacity else 0) - SearchBarSearch.width
+            on_text: root.textExist = (self.text != "");
+            multiline: False
+        Button:
+            id: SearchBarClear
+            size_hint: None, 1
+            opacity: 1 if root.textExist else 0
+            width: self.height if self.opacity else 0
+            on_press: SearchTextInput.text = ""
+            background_normal: 'Libs/Resources/JSearchBarClearIcon.png'
+            border: 0, 0, 0, 0
+        Button:
+            id:SearchBarSearch
+            size_hint: None, 1
+            width: self.height
+            enabled: 1 if root.textExist else 0
+            on_press: print(SearchTextInput.text)
+            background_normal: 'Libs/Resources/JSearchBarSearchIcon.png'
+            border: 0, 0, 0, 0
+
+<WorkspaceScreenMediaLibraryRecycleView@RecycleView>:
+    canvas.before:
+        Color:
+            rgba: 0.94, 0.94, 0.94, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    viewclass: 'WelcomeScreenSessionListItemView'
+    data : [{'filename': str(x)} for x in range(100)]
+    RecycleBoxLayout:
+        default_size: None, dp(60)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
+<WorkspaceScreen>:
+    RelativeLayout:
+        size: self.parent.size
+
+        TabbedPanel:
+            id: MainMenuTabbedPanel
+            element_default_width: 150
+            element_default_height: 150
+            tab_height: 50
+            size_hint: 1, None
+            height: (self.element_default_height + self.tab_height)
+            pos_hint: {'x': 0, 'y': ((self.parent.height - self.height) / self.parent.height)}
+            do_default_tab: False
+
+            TabbedPanelItem:
+                text: 'General'
+
+            TabbedPanelItem:
+                text: 'Session'
+                background_color: 0.94, 0.94, 0.94, 1
+                GridLayout:
+                    rows: 1
+                    WorkspaceScreenTopTabBarItem:
+                        size_hint_x: None
+                        width: MainMenuTabbedPanel.element_default_width
+                        label_text: "new"
+                        image_source: 'Libs/Resources/new.png'
+                        on_press: root.new_session_button_pressed()
+                    WorkspaceScreenTopTabBarItem:
+                        size_hint_x: None
+                        width: MainMenuTabbedPanel.element_default_width
+                        label_text: "open"
+                        image_source: 'Libs/Resources/open.png'
+                        on_press: root.open_session_button_pressed()
+
+                    WorkspaceScreenTopTabBarItem:
+                        size_hint_x: None
+                        width: MainMenuTabbedPanel.element_default_width
+                        label_text: "save"
+                        image_source: 'Libs/Resources/save.png'
+                        on_press: root.save_session_button_pressed()
+                    WorkspaceScreenTopTabBarItem:
+                        size_hint_x: None
+                        width: MainMenuTabbedPanel.element_default_width
+                        label_text: "add to library"
+                        image_source: 'Libs/Resources/addToLibrary.png'
+                        on_press: root.add_to_library_button_pressed()
+
+            TabbedPanelItem:
+                text: 'View'
+                AnchorLayout:
+                    anchor_x: 'right'
+                    anchor_y: 'center'
+                    BoxLayout:
+                        size_hint: None, .5
+                        width: MainMenuTabbedPanel.element_default_width + ((MainMenuTabbedPanel.element_default_width / 2) * 0.75)
+                        orientation: "horizontal"
+                        Button:
+                            highlight: True
+                            size_hint: None, 1
+                            background_normal: ''
+                            background_down: ''
+                            background_color: (0.24, 0.54, 0.96, 1) if self.highlight else (0.3, 0.15, 0, 1)
+                            width: MainMenuTabbedPanel.element_default_width/2
+                            on_press: self.highlight = not self.highlight; LeftTabbedPanel.opacity = 1 if self.highlight else 0
+                            RelativeLayout:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                Image:
+                                    size: self.parent.size
+                                    source: 'Libs/Resources/left_switcher.png'
+                        Button:
+                            highlight: True
+                            size_hint: None, 1
+                            background_normal: ''
+                            background_down: ''
+                            background_color: (0.24, 0.54, 0.96, 1) if self.highlight else (0.3, 0.15, 0, 1)
+                            width: MainMenuTabbedPanel.element_default_width/2
+                            on_press: self.highlight = not self.highlight; RightTabbedPanel.opacity = 1 if self.highlight else 0
+                            RelativeLayout:
+                                pos: self.parent.pos
+                                size: self.parent.size
+                                Image:
+                                    size_hint: 1, 1
+                                    source: 'Libs/Resources/right_switcher.png'
+
+
+        #LeftPanel
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            TabbedPanel:
+                canvas:
+                    Color:
+                        rgba: 0.94, 0.94, 0.94, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                id: LeftTabbedPanel
+                do_default_tab: False
+                x: self.parent.x
+                y: 0
+                size_hint: None, None
+                height: (self.parent.height - MainMenuTabbedPanel.height)
+                width: 500
+                tab_height: 75
+                tab_width: 75
+                element_default_width: self.width
+                element_default_height: 50
+                tab_pos: 'top_mid'
+
+                TabbedPanelItem:
+                    background_normal: 'Libs/Resources/medialibrary_tab_icon_normal.png'
+                    background_down: 'Libs/Resources/medialibrary_tab_icon_down.png'
+                    border: 0, 0, 0, 0
+                    BoxLayout:
+                        orientation: "vertical"
+                        WorkspaceScreenMediaLibraryRecycleView:
+                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                        JSearchBar:
+                            id:MediaLibrarySearchBar
+                            size_hint: 1, None
+                            height: 50
+
+
+                TabbedPanelItem:
+                    background_color: 0.24, 0.54, 0.96, 1
+        # right panel
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            TabbedPanel:
+                id: RightTabbedPanel
+                do_default_tab: False
+                y: 0
+                size_hint: None, None
+                height: (self.parent.height - MainMenuTabbedPanel.height)
+                width: 500
+                tab_height: 50
+                element_default_width: self.width
+                element_default_height: 50
+
+                TabbedPanelItem:
+                    text: "PatientInfo"
+                TabbedPanelItem:
+                    text: "MRIInfo"
+        #Center panel
+        AnchorLayout:
+            canvas:
+                Color:
+                    rgba: 1, 0, 0, 0.5
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint: None, None
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            x: 0 + LeftTabbedPanel.right if LeftTabbedPanel.opacity else 0
+            y: 0
+            height: (self.parent.height - MainMenuTabbedPanel.height)
+            width: self.parent.width - (LeftTabbedPanel.width if LeftTabbedPanel.opacity else 0) - (RightTabbedPanel.width if RightTabbedPanel.opacity else 0)
+
