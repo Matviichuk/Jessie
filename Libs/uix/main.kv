@@ -178,13 +178,14 @@
                 text: root.label_text
 
 <JSearchBar@Widget>:
+
+    search_text: ""
     canvas:
         Color:
             rgba: 0.94, 0.94, 0.94, 1
         Rectangle:
             size: self.size
             pos: self.pos
-    textExist: True
     BoxLayout:
         size: self.parent.size
         pos: self.parent.pos
@@ -192,25 +193,24 @@
         TextInput:
             id: SearchTextInput
             size_hint: None, 1
-            width: self.parent.width - (SearchBarClear.width if SearchBarClear.opacity else 0) - SearchBarSearch.width
-            on_text: root.textExist = (self.text != "");
+            width: self.parent.width - (SearchBarClear.width if SearchBarClear.opacity else 0) #- SearchBarSearch.width
+            on_text: root.search_text = self.text
             multiline: False
         Button:
             id: SearchBarClear
             size_hint: None, 1
-            opacity: 1 if root.textExist else 0
+            opacity: 1 if root.search_text != "" else 0
             width: self.height if self.opacity else 0
             on_press: SearchTextInput.text = ""
             background_normal: 'Libs/Resources/JSearchBarClearIcon.png'
             border: 0, 0, 0, 0
-        Button:
-            id:SearchBarSearch
-            size_hint: None, 1
-            width: self.height
-            enabled: 1 if root.textExist else 0
-            on_press: print(SearchTextInput.text)
-            background_normal: 'Libs/Resources/JSearchBarSearchIcon.png'
-            border: 0, 0, 0, 0
+#        Button:
+#            id:SearchBarSearch
+#            size_hint: None, 1
+#            width: self.height
+#            enabled: 1 if root.search_text != "" else 0
+#            background_normal: 'Libs/Resources/JSearchBarSearchIcon.png'
+#            border: 0, 0, 0, 0
 
 <WorkspaceScreenMediaLibraryRecycleView@RecycleView>:
     canvas.before:
@@ -351,6 +351,7 @@
                             id:MediaLibrarySearchBar
                             size_hint: 1, None
                             height: 50
+                            on_search_text: print(self.search_text)
 
 
                 TabbedPanelItem:

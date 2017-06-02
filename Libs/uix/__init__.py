@@ -9,12 +9,10 @@ from kivy.factory import Factory
 
 from .weclomeScreen import WelcomeScreen
 from .workspaceScreen import WorkspaceScreen
-from .jSearchBar import JSearchBarClearIcon
 #from .jTheme import JTheme
 
 __all__ = ("WelcomeScreen",
-           "WorkspaceScreen",
-           "JSearchBarClearIcon"
+           "WorkspaceScreen"
            )
 
 
