@@ -1,38 +1,59 @@
 #:kivy 1.10.0
 
-<WelcomeScreenSessionListItemView@RecycleDataViewBehavior+Widget>:
+#########################################################
+#                                                       #
+#                   COLORS                              #
+#                                                       #
+#########################################################
+# define used colors
+#: set color1 (0.965, 0.965, 0.965)  #hex F5F5F5
+#: set color2 (0.325, 0.553, 0.683)  #hex 538DDC
+#: set color_white (1, 1, 1)
+#: set color_black (0, 0, 0)
+
+#: set color1_rgba (0.965, 0.965, 0.965, 1)
+#: set color2_rgba (0.325, 0.553, 0.683, 1)
+#: set clear_color (0, 0, 0, 0)
+
+#: set text_color_white (1, 1, 1, 1)
+#: set text_color_black (0, 0, 0, 1)
+
+
+
+#########################################################
+#                                                       #
+#                   WELCOME SCREEN DEPENDENCY           #
+#                                                       #
+#########################################################
+
+<WelcomeScreenSessionListItemView@RecycleDataViewBehavior+Button>:
+    background_down: ""
+    background_normal: ""
+    on_press: root.selected = not root.selected
+    canvas:
+        Color:
+            rgb: color2 if root.selected else color1 # cell bg color
+            a: 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
 # session general info
     filename: "fileName"
     patient_name: "patientName"
     filepath: "filePath"
 # default cell celected state
     selected: False
-    canvas.before:
-        Color:
-            rgba: (0.24, 0.54, 0.96, 1) if root.selected else (0.965, 0.965, 0.965, 1) # cell bg color
-        Rectangle:
-            size: self.size
-            pos: self.pos
+
 # cell image border
     RelativeLayout:
         x: self.parent.x
         y: self.parent.y
         height: self.parent.height
         width: self.height
-        canvas.before:
-            Color:
-                rgba: 0, 0, 0, 0 # image border color
-            Rectangle:
-                size: self.size
 # cell image
         RelativeLayout:
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             size_hint: 0.9, 0.9
-            canvas:
-                Color:
-                    rgba: 0, 0, 0, 0 # image bg color
-                Rectangle:
-                    size: self.size
             Image:
                 size_hint: 1, 1
                 source: 'Libs/Resources/brain.png'
@@ -42,11 +63,6 @@
         y: self.parent.y
         height: self.parent.height
         width: self.parent.width - self.parent.height
-        canvas:
-            Color:
-                rgba: 0, 0, 0, 0 # textBox bg color
-            Rectangle:
-                size: self.size
         BoxLayout:
             orientation: 'vertical'
             Label:
@@ -54,26 +70,27 @@
                 bold: 1
                 text_size: self.size
                 haling: 'right'
-                color: (1, 1, 1, 1) if root.selected else (0, 0, 0, 1) # filename label text color
+                color: text_color_white if root.selected else text_color_black
             Label:
                 text: root.patient_name
                 bold: 1
                 text_size: self.size
                 haling: 'right'
-                color: (1, 1, 1, 1) if root.selected else (0, 0, 0, 1) # patient_name label text color
+                color: text_color_white if root.selected else text_color_black
             Label:
                 text: root.filepath
                 bold: 0
                 text_size: self.size
                 haling: 'right'
-                color: (1, 1, 1, 1) if root.selected else (0, 0, 0, 1) # filePath label text color
+                color: text_color_white if root.selected else text_color_black
 
 
 
 <WelcomeScreenSessionRecycleView@RecycleView>:
     canvas.before:
         Color:
-            rgba: 0.94, 0.94, 0.94, 1
+            rgb: color1
+            a:1
         Rectangle:
             size: self.size
             pos: self.pos
@@ -85,73 +102,72 @@
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
+
+
 #############################################
 #                                           #
 #            WELCOME SCREEN                 #
 #                                           #
 #############################################
+
+
 <WelcomeScreen>:
     RelativeLayout:
         pos_hint: {'x': 0, 'y': 0}
         size_hint: 0.6, 1
         canvas:
             Color:
-                rgb: 0.925, 0.925, 0.925
+                rgb: color1
+                a: 1
             Rectangle:
                 size: self.size
         RelativeLayout:
-            size_hint: 0.4, 0.4
-            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
-            Image:
-                size_hint: 1, 1
-                source: 'Libs/Resources/brain.png'
-        RelativeLayout:
-            pos_hint: {'center_x': 0.5, 'center_y': 0.38}
-            Label:
-                text: 'pyMRI'
-                font_size: 20
-                bold: 1
-                color: 0, 0, 0, 1
-
-        RelativeLayout:
-            size_hint: 0.4, 0.05
-            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-            Button:
-                id: createNewSessionButtonID
-                background_normal: ''
-                background_down: ''
-                background_color: 0, 0, 0, 0
-                color: 0, 0, 0, 1
-                text: "create new session"
-                on_press: root.createNewSesionButtonPressed()
-                on_release: root.createNewSessionButtonReleased()
+            size_hint: 0.4, 0.6
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            BoxLayout:
+                orientation: "vertical"
+                Image:
+                    size_hint: 1, 0.4/0.6
+                    source: 'Libs/Resources/brain.png'
+                Label:
+                    id: AppNameLabel
+                    size_hint: 1, None
+                    height: dp(30)
+                    text: 'pyMRI'
+                    font_size: 44
+                    bold: 1
+                    color: text_color_black
+                Button:
+                    size_hint: 1, None
+                    height: dp(44)
+                    id: CreateNewSessionButtonID
+                    background_normal: ''
+                    background_down: ''
+                    background_color: clear_color
+                    color: text_color_black
+                    text: "create new session"
+                    on_press: self.background_color = color2_rgba; app.route = "/workspace"
+                    on_release: self.background_color = clear_color; root.createNewSessionButtonReleased()
 
     RelativeLayout:
         pos_hint: {'x': .6, 'y': 0}
         size_hint: .4, 1
-        RelativeLayout:
-            pos_hint: {'x': 0, 'y': dp(24) / self.height}
-            size_hint: 1, 1 - (dp(24) / self.height)
-            canvas.before:
-                Color:
-                    rgb: 1, 1, 1
-                Rectangle:
-                    size: self.size
+        BoxLayout:
+            orientation: "vertical"
             WelcomeScreenSessionRecycleView:
-
-        RelativeLayout:
-            pos_hint: {'x': 0, 'y': 0}
-            size_hint: 1, None
-            height: dp(24)
+                size_hint: 1, None
+                height: self.parent.height - OpenExistSessionButtonID.height
             Button:
-                id: openExistSessionButtonID
+                size_hint: 1, None
+                height: 44
+                id: OpenExistSessionButtonID
                 background_normal: ''
                 background_down: ''
-                background_color: 0.94, 0.94, 0.94, 1
+                background_color: color1_rgba
                 text: 'open exist session'
-                color: 0, 0, 0, 1
-                on_press: app.route = "/workspace"
-
+                color: text_color_black
+                on_press: self.background_color = color2_rgba
+                on_release: self.background_color = color1_rgba; root.openExistSessionButtonReleased()
 
 
 #############################################
@@ -171,8 +187,9 @@
         size: self.parent.size
         BoxLayout:
             orientation: "vertical"
+            padding: 0, self.height * 0.1, 0, 0
             Image:
-                size_hint: 1, .6
+                size_hint: 1, .5
                 source: root.image_source
             Label:
                 size_hint: 1, 0.4
@@ -223,7 +240,7 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    viewclass: 'WelcomeScreenSessionListItemView'
+    viewclass: 'Button'
     data : [{'filename': str(x)} for x in range(100)]
     RecycleBoxLayout:
         default_size: None, dp(60)
@@ -231,6 +248,25 @@
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
+
+
+
+<WorkspaceScreenSegmentsRecycleView@RecycleView>:
+    canvas.before:
+        Color:
+            rgba: 0.94, 0.94, 0.94, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    viewclass: 'Widget'
+    data : [{'filename': str(x)} for x in range(100)]
+    RecycleBoxLayout:
+        default_size: None, dp(60)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
 
 <WorkspaceScreen>:
     RelativeLayout:
@@ -399,7 +435,19 @@
 
 
                 TabbedPanelItem:
-                    background_color: 0.24, 0.54, 0.96, 1
+                    background_normal: 'Libs/Resources/workspace_segment_tab_icon_normal.png'
+                    background_down: 'Libs/Resources/workspace_segment_tab_icon_down.png'
+                    border: 0, 0, 0, 0
+                    BoxLayout:
+                        orientation: "vertical"
+                        WorkspaceScreenSegmentsRecycleView:
+                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                        JSearchBar:
+                            id:MediaLibrarySearchBar
+                            size_hint: 1, None
+                            height: 50
+                            hint_text: "Filter"
+                            on_search_text: print(self.search_text)
         # right panel
         AnchorLayout:
             anchor_x: 'right'
