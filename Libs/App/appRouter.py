@@ -1,7 +1,7 @@
 from kivy.garden.router import Router, route
 
-from .uix.weclomeScreen import WelcomeScreen
-from .uix.workspaceScreen import WorkspaceScreen
+from .Uix.weclomeScreen import WelcomeScreen
+from .Uix.workspaceScreen import WorkspaceScreen
 class MainRouter(Router):
     @route("/")
     def index(self):
