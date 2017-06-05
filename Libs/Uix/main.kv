@@ -10,12 +10,18 @@
 #: set color2 (0.325, 0.553, 0.683)  #hex 538DDC
 #: set color_white (1, 1, 1)
 #: set color_black (0, 0, 0)
+#: set color_silver (0.5, 0.5, 0.5)
+#: set color_silver_dark (0.25, 0.25, 0.25)
+#: set color_silver_light (0.75, 0.75, 0.75)
 
 #: set color1_rgba (0.965, 0.965, 0.965, 1)
 #: set color2_rgba (0.325, 0.553, 0.683, 1)
 #: set clear_color (0, 0, 0, 0)
 #: set color_white_rgba (1, 1, 1, 1)
 #: set color_black_rgba (0, 0, 0, 1)
+#: set color_silver_rgba (0.5, 0.5, 0.5, 1)
+#: set color_silver_dark_rgba (0.25, 0.25, 0.25, 1)
+#: set color_sizver_light_rgba (0.75, 0.75, 0.75, 1)
 
 #: set text_color_white (1, 1, 1, 1)
 #: set text_color_black (0, 0, 0, 1)
@@ -254,14 +260,36 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    viewclass: 'Button'
-    data : [{'text': str(x)} for x in range(100)]
+    viewclass: 'WorkspaceScreenMediaLibraryListItemView'
+    data : [{'label_text': "Slice #" + str(x), 'index_path': x} for x in range(5)]
     RecycleBoxLayout:
         default_size: root.element_size
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
+
+<WorkspaceScreenMediaLibraryListItemView@Button>:
+    index_path: 0
+    label_text: "Slice"
+    background_color: (clear_color if root.index_path % 2 == 0 else color_silver_rgba) if self.state == "normal" else color2_rgba
+    background_normal: ""
+    background_down: ""
+    BoxLayout:
+        size: self.parent.size
+        pos: self.parent.pos
+        orientation: "horizontal"
+        Image:
+            size_hint: None, 1
+            width: self.parent.height
+            source: "Libs/Resources/brain.png"
+
+        Label:
+            text: root.label_text
+            color: text_color_black
+
+
+
 
 
 
@@ -425,7 +453,7 @@
             TabbedPanel:
                 canvas:
                     Color:
-                        rgb: color1
+                        rgb: color_silver_light
                         a: 1
                     Rectangle:
                         size: self.size
@@ -496,7 +524,7 @@
                 width: sp(250)
                 canvas:
                     Color:
-                        rgb: color1
+                        rgb: color_silver_light
                         a: 1
                     Rectangle:
                         size: self.size
@@ -551,4 +579,7 @@
             y: 0
             height: (self.parent.height - MainMenuTabbedPanel.height)
             width: self.parent.width - (LeftTabbedPanel.width if LeftTabbedPanel.opacity else 0) - (RightTabbedPanel.width if RightTabbedPanel.opacity else 0)
+            Image:
+                size_hint: 1, 1
+                source: "Libs/Resources/brain1.png"
 
