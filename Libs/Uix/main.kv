@@ -146,7 +146,7 @@
                     background_color: clear_color
                     color: text_color_black
                     text: "create new session"
-                    on_press: self.background_color = color2_rgba; #app.route = "/workspace"
+                    on_press: self.background_color = color2_rgba; app.route = "/workspace"
                     on_release: self.background_color = clear_color; root.createNewSessionButtonReleased()
 
     RelativeLayout:
@@ -194,7 +194,7 @@
             Label:
                 size_hint: 1, 0.4
                 color: 0, 0, 0, 1
-                font_size: "26"
+                font_size: sp(14)
                 text: root.label_text
 
 
@@ -243,7 +243,7 @@
     viewclass: 'Button'
     data : [{'filename': str(x)} for x in range(100)]
     RecycleBoxLayout:
-        default_size: None, dp(60)
+        default_size: None, sp(40)
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
@@ -258,10 +258,10 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    viewclass: 'Widget'
+    viewclass: 'Button'
     data : [{'filename': str(x)} for x in range(100)]
     RecycleBoxLayout:
-        default_size: None, dp(60)
+        default_size: None, sp(40)
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
@@ -280,9 +280,9 @@
                     size: self.size
                     pos: self.pos
             id: MainMenuTabbedPanel
-            element_default_width: 150
-            element_default_height: 150
-            tab_height: 50
+            element_default_width: sp(75)
+            element_default_height: sp(75)
+            tab_height: sp(25)
             size_hint: 1, None
             height: (self.element_default_height + self.tab_height)
             pos_hint: {'x': 0, 'y': ((self.parent.height - self.height) / self.parent.height)}
@@ -411,11 +411,11 @@
                 y: 0
                 size_hint: None, None
                 height: (self.parent.height - MainMenuTabbedPanel.height)
-                width: 500
-                tab_height: 50
-                tab_width: 50
+                width: sp(250)
+                tab_height: sp(32)
+                tab_width: self.tab_height
                 element_default_width: self.width
-                element_default_height: 50
+                element_default_height: sp(50)
                 tab_pos: 'top_mid'
 
                 TabbedPanelItem:
@@ -429,7 +429,7 @@
                         JSearchBar:
                             id:MediaLibrarySearchBar
                             size_hint: 1, None
-                            height: 50
+                            height: sp(28)
                             hint_text: "Filter"
                             on_search_text: print(self.search_text)
 
@@ -445,7 +445,7 @@
                         JSearchBar:
                             id:MediaLibrarySearchBar
                             size_hint: 1, None
-                            height: 50
+                            height: sp(28)
                             hint_text: "Filter"
                             on_search_text: print(self.search_text)
         # right panel
@@ -458,10 +458,10 @@
                 y: 0
                 size_hint: None, None
                 height: (self.parent.height - MainMenuTabbedPanel.height)
-                width: 500
-                tab_height: 50
+                width: sp(250)
+                tab_height: sp(25)
                 element_default_width: self.width
-                element_default_height: 50
+                element_default_height: sp(50)
 
                 TabbedPanelItem:
                     text: "PatientInfo"
