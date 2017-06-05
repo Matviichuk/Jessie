@@ -14,10 +14,13 @@
 #: set color1_rgba (0.965, 0.965, 0.965, 1)
 #: set color2_rgba (0.325, 0.553, 0.683, 1)
 #: set clear_color (0, 0, 0, 0)
+#: set color_white_rgba (1, 1, 1, 1)
+#: set color_black_rgba (0, 0, 0, 1)
 
 #: set text_color_white (1, 1, 1, 1)
 #: set text_color_black (0, 0, 0, 1)
-
+#: set text_color1 (0.965, 0.965, 0.965, 1)
+#: set text_color2 (0.325, 0.553, 0.683, 1)
 
 
 #########################################################
@@ -172,7 +175,7 @@
 
 #############################################
 #                                           #
-#               WORKSPACE SCREEN            #
+#     WORKSPACE SCREEN DEPENDENCY           #
 #                                           #
 #############################################
 
@@ -181,21 +184,28 @@
     background_down: ''
     label_text: ""
     image_source: ""
-    background_color: (0.4, .75, .83, 1) if self.state == 'down' else (0, 0, 0, 0)
-    RelativeLayout:
+    background_color: clear_color
+    selected_color: color2_rgba
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: root.selected_color if root.state == 'down' else clear_color
+            Rectangle:
+                pos: self.center_x - (self.width * 0.9)/2., self.center_y - (self.height * 0.9) /2.
+                size: self.width * 0.9, self.height * 0.9
+        height: self.parent.height
+        width: self.parent.width
         pos: self.parent.pos
-        size: self.parent.size
-        BoxLayout:
-            orientation: "vertical"
-            padding: 0, self.height * 0.1, 0, 0
-            Image:
-                size_hint: 1, .5
-                source: root.image_source
-            Label:
-                size_hint: 1, 0.4
-                color: 0, 0, 0, 1
-                font_size: sp(14)
-                text: root.label_text
+        padding: 0, self.height * 0.1, 0, 0
+        orientation: "vertical"
+        Image:
+            size_hint: 1, .5
+            source: root.image_source
+        Label:
+            size_hint: 1, 0.4
+            color: text_color_black
+            font_size: sp(12)
+            text: root.label_text
 
 
 <JSearchBar@Widget>:
@@ -204,7 +214,8 @@
     hint_text: ""
     canvas:
         Color:
-            rgba: 0.94, 0.94, 0.94, 1
+            rgb: color1
+            a: 1
         Rectangle:
             size: self.size
             pos: self.pos
@@ -224,6 +235,7 @@
             on_text: root.search_text = self.text
             hint_text: root.hint_text
             multiline: False
+            color: text_color_black
         Button:
             id: SearchBarClear
             size_hint: None, 1
@@ -234,16 +246,18 @@
             border: 0, 0, 0, 0
 
 <WorkspaceScreenMediaLibraryRecycleView@RecycleView>:
+    element_size: None, sp(40)
     canvas.before:
         Color:
-            rgba: 0.94, 0.94, 0.94, 1
+            rgb: color1
+            a:1
         Rectangle:
             size: self.size
             pos: self.pos
     viewclass: 'Button'
-    data : [{'filename': str(x)} for x in range(100)]
+    data : [{'text': str(x)} for x in range(100)]
     RecycleBoxLayout:
-        default_size: None, sp(40)
+        default_size: root.element_size
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
@@ -252,30 +266,39 @@
 
 
 <WorkspaceScreenSegmentsRecycleView@RecycleView>:
+    element_size: None, sp(40)
     canvas.before:
         Color:
-            rgba: 0.94, 0.94, 0.94, 1
+            rgb: color1
+            a: 1
         Rectangle:
             size: self.size
             pos: self.pos
     viewclass: 'Button'
-    data : [{'filename': str(x)} for x in range(100)]
+    data : [{'text': str(x)} for x in range(100)]
     RecycleBoxLayout:
-        default_size: None, sp(40)
+        default_size: root.element_size
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
 
+#################################################
+#                                               #
+#               WORKSPACE SCREEN                #
+#                                               #
+#################################################
+
 
 <WorkspaceScreen>:
     RelativeLayout:
         size: self.parent.size
-
+        # top panel
         TabbedPanel:
             canvas:
                 Color:
-                    rgba: 0.94, 0.94, 0.94, 1
+                    rgb: color2
+                    a: 1
                 Rectangle:
                     size: self.size
                     pos: self.pos
@@ -289,32 +312,16 @@
             do_default_tab: False
 
             TabbedPanelItem:
-                color: (0, 0, 0, 1) if MainMenuTabbedPanel.current_tab == self else (1, 1, 1, 1)
-                background_color: (0.4, .75, .83, 1) if MainMenuTabbedPanel.current_tab == self else (.32, .32, .32, 1)
-                background_normal: ""
-                background_down: ""
-                text: 'General'
-                GridLayout:
-                    canvas:
-                        Color:
-                            rgba: 0.64, 0.64, 0.64, 1
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
-
-                    rows: 1
-
-
-            TabbedPanelItem:
-                color: (0, 0, 0, 1) if MainMenuTabbedPanel.current_tab == self else (1, 1, 1, 1)
-                background_color: (0.4, .75, .83, 1) if MainMenuTabbedPanel.current_tab == self else (.32, .32, .32, 1)
+                color: text_color2 if MainMenuTabbedPanel.current_tab == self else text_color_white
+                background_color: color1_rgba if MainMenuTabbedPanel.current_tab == self else clear_color
                 background_normal: ""
                 background_down: ""
                 text: 'Session'
                 GridLayout:
                     canvas:
                         Color:
-                            rgba: 0.64, 0.64, 0.64, 1
+                            rgb: color1
+                            a: 1
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -346,15 +353,16 @@
                         on_press: root.add_to_library_button_pressed()
 
             TabbedPanelItem:
-                color: (0, 0, 0, 1) if MainMenuTabbedPanel.current_tab == self else (1, 1, 1, 1)
-                background_color: (0.4, .75, .83, 1) if MainMenuTabbedPanel.current_tab == self else (.32, .32, .32, 1)
+                color: text_color2 if MainMenuTabbedPanel.current_tab == self else text_color_white
+                background_color: color1_rgba if MainMenuTabbedPanel.current_tab == self else clear_color
                 background_normal: ""
                 background_down: ""
                 text: 'View'
                 AnchorLayout:
                     canvas:
                         Color:
-                            rgba: 0.64, 0.64, 0.64, 1
+                            rgb: color1
+                            a:1
                         Rectangle:
                             size: self.size
                             pos: self.pos
@@ -392,6 +400,22 @@
                                 Image:
                                     size_hint: 1, 1
                                     source: 'Libs/Resources/right_switcher.png'
+            TabbedPanelItem:
+                color: text_color2 if MainMenuTabbedPanel.current_tab == self else text_color_white
+                background_color: color1_rgba if MainMenuTabbedPanel.current_tab == self else clear_color
+                background_normal: ""
+                background_down: ""
+                text: 'Help'
+                GridLayout:
+                    canvas:
+                        Color:
+                            rgb: color1
+                            a:1
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    rows: 1
 
 
         #LeftPanel
@@ -401,7 +425,8 @@
             TabbedPanel:
                 canvas:
                     Color:
-                        rgba: 0.94, 0.94, 0.94, 1
+                        rgb: color1
+                        a: 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -414,13 +439,17 @@
                 width: sp(250)
                 tab_height: sp(32)
                 tab_width: self.tab_height
-                element_default_width: self.width
-                element_default_height: sp(50)
                 tab_pos: 'top_mid'
 
                 TabbedPanelItem:
-                    background_normal: 'Libs/Resources/medialibrary_tab_icon_normal.png'
-                    background_down: 'Libs/Resources/medialibrary_tab_icon_down.png'
+                    background_normal: 'Libs/Resources/medialibrary_tab_icon.png'
+                    background_down: 'Libs/Resources/medialibrary_tab_icon.png'
+                    canvas.before:
+                        Color:
+                            rgba: color2_rgba if self.state == "down" else clear_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
                     border: 0, 0, 0, 0
                     BoxLayout:
                         orientation: "vertical"
@@ -435,9 +464,15 @@
 
 
                 TabbedPanelItem:
-                    background_normal: 'Libs/Resources/workspace_segment_tab_icon_normal.png'
-                    background_down: 'Libs/Resources/workspace_segment_tab_icon_down.png'
+                    background_normal: 'Libs/Resources/workspace_segment_tab_icon.png'
+                    background_down: 'Libs/Resources/workspace_segment_tab_icon.png'
                     border: 0, 0, 0, 0
+                    canvas.before:
+                        Color:
+                            rgba: color2_rgba if self.state == "down" else clear_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
                     BoxLayout:
                         orientation: "vertical"
                         WorkspaceScreenSegmentsRecycleView:
@@ -459,14 +494,47 @@
                 size_hint: None, None
                 height: (self.parent.height - MainMenuTabbedPanel.height)
                 width: sp(250)
-                tab_height: sp(25)
-                element_default_width: self.width
-                element_default_height: sp(50)
+                canvas:
+                    Color:
+                        rgb: color1
+                        a: 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                tab_height: sp(32)
+                tab_width: self.tab_height
+                tab_pos: 'top_mid'
+                TabbedPanelItem:
+                    # patient info tab
+                    background_normal: 'Libs/Resources/workspace_patient_info_tab_icon.png'
+                    background_down: 'Libs/Resources/workspace_patient_info_tab_icon.png'
+                    canvas.before:
+                        Color:
+                            rgba: color2_rgba if self.state == "down" else clear_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    border: 0, 0, 0, 0
+                    BoxLayout:
+                        orientation: "vertical"
+                        WorkspaceScreenMediaLibraryRecycleView:
+                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                TabbedPanelItem:
+                    # MRI info tab
+                    background_normal: 'Libs/Resources/workspace_mri_info_tab_icon.png'
+                    background_down: 'Libs/Resources/workspace_mri_info_tab_icon.png'
+                    canvas.before:
+                        Color:
+                            rgba: color2_rgba if self.state == "down" else clear_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    border: 0, 0, 0, 0
+                    BoxLayout:
+                        orientation: "vertical"
+                        WorkspaceScreenMediaLibraryRecycleView:
+                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
 
-                TabbedPanelItem:
-                    text: "PatientInfo"
-                TabbedPanelItem:
-                    text: "MRIInfo"
         #Center panel
         AnchorLayout:
             canvas:
