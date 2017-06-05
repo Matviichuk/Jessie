@@ -97,7 +97,7 @@
     viewclass: 'WelcomeScreenSessionListItemView'
     data : [{'filename': str(x)} for x in range(100)]
     RecycleBoxLayout:
-        default_size: None, dp(60)
+        default_size: None, sp(60)
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
@@ -132,21 +132,21 @@
                 Label:
                     id: AppNameLabel
                     size_hint: 1, None
-                    height: dp(30)
+                    height: sp(30)
                     text: 'pyMRI'
-                    font_size: 44
+                    font_size: 30
                     bold: 1
                     color: text_color_black
                 Button:
                     size_hint: 1, None
-                    height: dp(44)
+                    height: sp(32)
                     id: CreateNewSessionButtonID
                     background_normal: ''
                     background_down: ''
                     background_color: clear_color
                     color: text_color_black
                     text: "create new session"
-                    on_press: self.background_color = color2_rgba; app.route = "/workspace"
+                    on_press: self.background_color = color2_rgba; #app.route = "/workspace"
                     on_release: self.background_color = clear_color; root.createNewSessionButtonReleased()
 
     RelativeLayout:
@@ -159,7 +159,7 @@
                 height: self.parent.height - OpenExistSessionButtonID.height
             Button:
                 size_hint: 1, None
-                height: 44
+                height: sp(32)
                 id: OpenExistSessionButtonID
                 background_normal: ''
                 background_down: ''
