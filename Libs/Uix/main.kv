@@ -261,7 +261,6 @@
             size: self.size
             pos: self.pos
     viewclass: 'WorkspaceScreenMediaLibraryListItemView'
-    data : [{'label_text': "Slice #" + str(x), 'index_path': x} for x in range(5)]
     RecycleBoxLayout:
         default_size: root.element_size
         default_size_hint: 1, None
@@ -285,6 +284,7 @@
             source: "Libs/Resources/workspacescreen_medialibrary_item_default_icon.png"
 
         Label:
+            markup: True
             text: root.label_text
             color: text_color_black
 
@@ -545,13 +545,15 @@
                     BoxLayout:
                         orientation: "vertical"
                         WorkspaceScreenMediaLibraryRecycleView:
+                            id: WorkspaceScreenMediaLibraryRecycleViewID
                             size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                            data: root.mediaLibraryShowData
                         JSearchBar:
                             id:MediaLibrarySearchBar
                             size_hint: 1, None
                             height: sp(28)
                             hint_text: "Filter"
-                            on_search_text: root._filer_medialibrary_data(self.search_text)
+                            on_search_text: root._filer_medialibrary_tab_data(self.search_text)
 
 
                 TabbedPanelItem:
@@ -567,13 +569,13 @@
                     BoxLayout:
                         orientation: "vertical"
                         WorkspaceScreenSegmentsRecycleView:
-                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                            size_hint: 1, (1 - SegmentsLibrarySearchBar.height/self.parent.height)
                         JSearchBar:
-                            id:MediaLibrarySearchBar
+                            id:SegmentsLibrarySearchBar
                             size_hint: 1, None
                             height: sp(28)
                             hint_text: "Filter"
-                            on_search_text: print(self.search_text)
+                            on_search_text: root._filter_segments_tab_data(self.search_text)
         # right panel
         AnchorLayout:
             anchor_x: 'right'
