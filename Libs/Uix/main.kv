@@ -282,11 +282,13 @@
         Image:
             size_hint: None, 1
             width: self.parent.height
-            source: "Libs/Resources/brain.png"
+            source: "Libs/Resources/workspacescreen_medialibrary_item_default_icon.png"
 
         Label:
             text: root.label_text
             color: text_color_black
+
+
 
 
 <WorkspaceScreenSegmentsRecycleView@RecycleView>:
@@ -298,14 +300,79 @@
         Rectangle:
             size: self.size
             pos: self.pos
-    viewclass: 'Button'
-    data : [{'text': str(x)} for x in range(100)]
+    viewclass: 'WorkspaceScreenSegmentsListItemView'
+    data : [{'label_text': "Segment #" + str(x), 'index_path': x} for x in range(3)]
     RecycleBoxLayout:
         default_size: root.element_size
         default_size_hint: 1, None
         size_hint_y: None
         height: self.minimum_height
         orientation: 'vertical'
+
+<WorkspaceScreenSegmentsListItemView@Button>:
+    index_path: 0
+    label_text: "Slice"
+    background_color: (clear_color if root.index_path % 2 == 0 else color_silver_rgba) if self.state == "normal" else color2_rgba
+    background_normal: ""
+    background_down: ""
+    BoxLayout:
+        size: self.parent.size
+        pos: self.parent.pos
+        orientation: "horizontal"
+        Image:
+            size_hint: None, 1
+            width: self.parent.height
+            source: "Libs/Resources/workspacescreen_segments_item_default_icon.png"
+
+        Label:
+            text: root.label_text
+            color: text_color_black
+
+<WorkspaceScreenPatientInfoListItemView@Label>:
+    index_path: 0
+    name: "name"
+    description: "description"
+    canvas:
+        Color:
+            rgb: color1 if self.index_path % 2 == 0 else color_silver
+            a: 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        size: self.parent.size
+        pos: self.parent.pos
+        orientation: "horizontal"
+        Label:
+            text: root.name
+            color: text_color_black
+
+        Label:
+            text: root.description
+            color: text_color_black
+
+<WorkspaceScreenMRIInfoListItemView@Label>:
+    index_path: 0
+    name: "name"
+    description: "description"
+    canvas:
+        Color:
+            rgb: color1 if self.index_path % 2 == 0 else color_silver
+            a: 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        size: self.parent.size
+        pos: self.parent.pos
+        orientation: "horizontal"
+        Label:
+            text: root.name
+            color: text_color_black
+
+        Label:
+            text: root.description
+            color: text_color_black
 
 #################################################
 #                                               #
@@ -541,8 +608,22 @@
                     border: 0, 0, 0, 0
                     BoxLayout:
                         orientation: "vertical"
-                        WorkspaceScreenMediaLibraryRecycleView:
-                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                        RecycleView:
+                            canvas.before:
+                                Color:
+                                    rgb: color1
+                                    a: 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                            viewclass: 'WorkspaceScreenPatientInfoListItemView'
+                            data : [{'name': "patient attr#" + str(x), 'description': "description #" + str(x), 'index_path': x} for x in range(10)]
+                            RecycleBoxLayout:
+                                default_size: None, sp(40)
+                                default_size_hint: 1, None
+                                size_hint_y: None
+                                height: self.minimum_height
+                                orientation: 'vertical'
                 TabbedPanelItem:
                     # MRI info tab
                     background_normal: 'Libs/Resources/workspace_mri_info_tab_icon.png'
@@ -556,8 +637,23 @@
                     border: 0, 0, 0, 0
                     BoxLayout:
                         orientation: "vertical"
-                        WorkspaceScreenMediaLibraryRecycleView:
-                            size_hint: 1, (1 - MediaLibrarySearchBar.height/self.parent.height)
+                        RecycleView:
+                            canvas.before:
+                                Color:
+                                    rgb: color1
+                                    a: 1
+                                Rectangle:
+                                    size: self.size
+                                    pos: self.pos
+                            viewclass: 'WorkspaceScreenMRIInfoListItemView'
+                            data : [{'name': "MRI attr#" + str(x), 'description': "description #" + str(x), 'index_path': x} for x in range(10)]
+                            RecycleBoxLayout:
+                                default_size: None, sp(40)
+                                default_size_hint: 1, None
+                                size_hint_y: None
+                                height: self.minimum_height
+                                orientation: 'vertical'
+
 
         #Center panel
         AnchorLayout:
