@@ -301,7 +301,6 @@
             size: self.size
             pos: self.pos
     viewclass: 'WorkspaceScreenSegmentsListItemView'
-    data : [{'label_text': "Segment #" + str(x), 'index_path': x} for x in range(3)]
     RecycleBoxLayout:
         default_size: root.element_size
         default_size_hint: 1, None
@@ -325,6 +324,7 @@
             source: "Libs/Resources/workspacescreen_segments_item_default_icon.png"
 
         Label:
+            markup: True
             text: root.label_text
             color: text_color_black
 
@@ -569,9 +569,11 @@
                     BoxLayout:
                         orientation: "vertical"
                         WorkspaceScreenSegmentsRecycleView:
+                            id: WorkspaceScreenSegmentsRecycleViewID
+                            data: root.segmentsLibraryShowData
                             size_hint: 1, (1 - SegmentsLibrarySearchBar.height/self.parent.height)
                         JSearchBar:
-                            id:SegmentsLibrarySearchBar
+                            id: SegmentsLibrarySearchBar
                             size_hint: 1, None
                             height: sp(28)
                             hint_text: "Filter"

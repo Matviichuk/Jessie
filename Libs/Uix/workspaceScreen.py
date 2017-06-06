@@ -18,9 +18,19 @@ class WorkspaceScreen(Screen):
         self.mediaLibraryShowData.clear()
         for item in self.mediaLibraryAllData:
             self.mediaLibraryShowData.append(item)
+
+        self.segmentsLibraryShowData.clear()
+        for item in self.segmentsLibraryAllData:
+            self.segmentsLibraryShowData.append(item)
+
+
     # tmp source
     mediaLibraryAllData = [{'label_text': "Slice #" + str(x), 'index_path': x} for x in range(5)]
     mediaLibraryShowData = ListProperty()
+
+
+    segmentsLibraryAllData = [{'label_text': "Segment #" + str(x), 'index_path': x} for x in range(22)]
+    segmentsLibraryShowData = ListProperty()
 
     def new_session_button_pressed(self):
         print("new_session_button_pressed")
@@ -42,7 +52,11 @@ class WorkspaceScreen(Screen):
                 str_len = len(formated_item["label_text"])
                 start_markup = "[b][color=0000ff]"
                 end_markup = "[/color][/b]"
-                formated_text = formated_item["label_text"][0:substr_start] + start_markup+ formated_item["label_text"][substr_start:substr_end] + end_markup + formated_item["label_text"][substr_end: str_len]
+                formated_text = formated_item["label_text"][0:substr_start] \
+                                + start_markup \
+                                + formated_item["label_text"][substr_start:substr_end] \
+                                + end_markup \
+                                + formated_item["label_text"][substr_end: str_len]
                 formated_item["label_text"] = formated_text
                 self.mediaLibraryShowData.append(formated_item)
         else:
@@ -50,5 +64,24 @@ class WorkspaceScreen(Screen):
                 self.mediaLibraryShowData.append(item)
         pass
     def _filter_segments_tab_data(self, filterStr):
-        print(filterStr)
+        tmp = [i for i in self.segmentsLibraryAllData if i["label_text"].lower().__contains__(filterStr.lower())]
+        self.segmentsLibraryShowData = []
+        if filterStr != "":
+            for item in tmp:
+                formated_item = item.copy()
+                substr_start = formated_item["label_text"].lower().find(filterStr.lower())
+                substr_end = substr_start + len(filterStr)
+                str_len = len(formated_item["label_text"])
+                start_markup = "[b][color=0000ff]"
+                end_markup = "[/color][/b]"
+                formated_text = formated_item["label_text"][0:substr_start] \
+                                + start_markup \
+                                + formated_item["label_text"][substr_start:substr_end] \
+                                + end_markup \
+                                + formated_item["label_text"][substr_end: str_len]
+                formated_item["label_text"] = formated_text
+                self.segmentsLibraryShowData.append(formated_item)
+        else:
+            for item in tmp:
+                self.segmentsLibraryShowData.append(item)
 
