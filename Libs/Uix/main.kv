@@ -104,7 +104,6 @@
             size: self.size
             pos: self.pos
     viewclass: 'WelcomeScreenSessionListItemView'
-    data : [{'filename': str(x)} for x in range(100)]
     RecycleBoxLayout:
         default_size: None, sp(60)
         default_size_hint: 1, None
@@ -165,6 +164,7 @@
             orientation: "vertical"
             WelcomeScreenSessionRecycleView:
                 size_hint: 1, None
+                data: root.lastSessionListData
                 height: self.parent.height - OpenExistSessionButtonID.height
             Button:
                 size_hint: 1, None
@@ -621,7 +621,7 @@
                                     size: self.size
                                     pos: self.pos
                             viewclass: 'WorkspaceScreenPatientInfoListItemView'
-                            data : [{'name': "patient attr#" + str(x), 'description': "description #" + str(x), 'index_path': x} for x in range(10)]
+                            data : [{'name': "Name", 'description': "TestPat1", 'index_path': 0}]
                             RecycleBoxLayout:
                                 default_size: None, sp(40)
                                 default_size_hint: 1, None

@@ -1,20 +1,16 @@
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ListProperty
-
 kvFileMediaLibrarySearchBarID = "MediaLibrarySearchBar"
 kvFileSegmentsLibrarySearchBarID = "SegmentsLibrarySearchBar"
 
 class WorkspaceScreen(Screen):
 
-    def __init__(self, **kwargs):
-        super(WorkspaceScreen, self).__init__(**kwargs)
+    def on_pre_enter(self, *args):
         medialibrarySearchBar = self.ids[kvFileMediaLibrarySearchBarID]
         medialibrarySearchBar.bind(on_search_text=self._filer_medialibrary_tab_data)
         segmentsLibrarySearchBar = self.ids[kvFileSegmentsLibrarySearchBarID]
         segmentsLibrarySearchBar.bind(on_search_text=self._filter_segments_tab_data)
 
-
-        #temporary
         self.mediaLibraryShowData.clear()
         for item in self.mediaLibraryAllData:
             self.mediaLibraryShowData.append(item)
@@ -25,7 +21,7 @@ class WorkspaceScreen(Screen):
 
 
     # tmp source
-    mediaLibraryAllData = [{'label_text': "Slice #" + str(x), 'index_path': x} for x in range(5)]
+    mediaLibraryAllData = [{'label_text': "Slice #" + str(x), 'index_path': x} for x in range(47)]
     mediaLibraryShowData = ListProperty()
 
 
