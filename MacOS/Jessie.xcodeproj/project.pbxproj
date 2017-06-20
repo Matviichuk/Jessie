@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A67FF07F1EF97036008E2489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FF07E1EF97036008E2489 /* AppDelegate.swift */; };
+		A67FF0811EF97036008E2489 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FF0801EF97036008E2489 /* ViewController.swift */; };
+		A67FF0831EF97036008E2489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67FF0821EF97036008E2489 /* Assets.xcassets */; };
+		A67FF0861EF97036008E2489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67FF0841EF97036008E2489 /* Main.storyboard */; };
+		A67FF0911EF97036008E2489 /* JessieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FF0901EF97036008E2489 /* JessieTests.swift */; };
+		A67FF09C1EF97036008E2489 /* JessieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FF09B1EF97036008E2489 /* JessieUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A67FF08D1EF97036008E2489 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A67FF0731EF97036008E2489 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A67FF07A1EF97036008E2489;
+			remoteInfo = Jessie;
+		};
+		A67FF0981EF97036008E2489 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A67FF0731EF97036008E2489 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A67FF07A1EF97036008E2489;
+			remoteInfo = Jessie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A67FF07B1EF97036008E2489 /* Jessie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jessie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67FF07E1EF97036008E2489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A67FF0801EF97036008E2489 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A67FF0821EF97036008E2489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A67FF0851EF97036008E2489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A67FF0871EF97036008E2489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A67FF08C1EF97036008E2489 /* JessieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JessieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67FF0901EF97036008E2489 /* JessieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JessieTests.swift; sourceTree = "<group>"; };
+		A67FF0921EF97036008E2489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A67FF0971EF97036008E2489 /* JessieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JessieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67FF09B1EF97036008E2489 /* JessieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JessieUITests.swift; sourceTree = "<group>"; };
+		A67FF09D1EF97036008E2489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A67FF0781EF97036008E2489 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF0891EF97036008E2489 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF0941EF97036008E2489 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A67FF0721EF97036008E2489 = {
+			isa = PBXGroup;
+			children = (
+				A67FF07D1EF97036008E2489 /* Jessie */,
+				A67FF08F1EF97036008E2489 /* JessieTests */,
+				A67FF09A1EF97036008E2489 /* JessieUITests */,
+				A67FF07C1EF97036008E2489 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A67FF07C1EF97036008E2489 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A67FF07B1EF97036008E2489 /* Jessie.app */,
+				A67FF08C1EF97036008E2489 /* JessieTests.xctest */,
+				A67FF0971EF97036008E2489 /* JessieUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A67FF07D1EF97036008E2489 /* Jessie */ = {
+			isa = PBXGroup;
+			children = (
+				A67FF07E1EF97036008E2489 /* AppDelegate.swift */,
+				A67FF0801EF97036008E2489 /* ViewController.swift */,
+				A67FF0821EF97036008E2489 /* Assets.xcassets */,
+				A67FF0841EF97036008E2489 /* Main.storyboard */,
+				A67FF0871EF97036008E2489 /* Info.plist */,
+			);
+			path = Jessie;
+			sourceTree = "<group>";
+		};
+		A67FF08F1EF97036008E2489 /* JessieTests */ = {
+			isa = PBXGroup;
+			children = (
+				A67FF0901EF97036008E2489 /* JessieTests.swift */,
+				A67FF0921EF97036008E2489 /* Info.plist */,
+			);
+			path = JessieTests;
+			sourceTree = "<group>";
+		};
+		A67FF09A1EF97036008E2489 /* JessieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A67FF09B1EF97036008E2489 /* JessieUITests.swift */,
+				A67FF09D1EF97036008E2489 /* Info.plist */,
+			);
+			path = JessieUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A67FF07A1EF97036008E2489 /* Jessie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67FF0A01EF97036008E2489 /* Build configuration list for PBXNativeTarget "Jessie" */;
+			buildPhases = (
+				A67FF0771EF97036008E2489 /* Sources */,
+				A67FF0781EF97036008E2489 /* Frameworks */,
+				A67FF0791EF97036008E2489 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jessie;
+			productName = Jessie;
+			productReference = A67FF07B1EF97036008E2489 /* Jessie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A67FF08B1EF97036008E2489 /* JessieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67FF0A31EF97036008E2489 /* Build configuration list for PBXNativeTarget "JessieTests" */;
+			buildPhases = (
+				A67FF0881EF97036008E2489 /* Sources */,
+				A67FF0891EF97036008E2489 /* Frameworks */,
+				A67FF08A1EF97036008E2489 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A67FF08E1EF97036008E2489 /* PBXTargetDependency */,
+			);
+			name = JessieTests;
+			productName = JessieTests;
+			productReference = A67FF08C1EF97036008E2489 /* JessieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A67FF0961EF97036008E2489 /* JessieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67FF0A61EF97036008E2489 /* Build configuration list for PBXNativeTarget "JessieUITests" */;
+			buildPhases = (
+				A67FF0931EF97036008E2489 /* Sources */,
+				A67FF0941EF97036008E2489 /* Frameworks */,
+				A67FF0951EF97036008E2489 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A67FF0991EF97036008E2489 /* PBXTargetDependency */,
+			);
+			name = JessieUITests;
+			productName = JessieUITests;
+			productReference = A67FF0971EF97036008E2489 /* JessieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A67FF0731EF97036008E2489 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Olexandr Matviichuk";
+				TargetAttributes = {
+					A67FF07A1EF97036008E2489 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FH842TBZN3;
+						ProvisioningStyle = Automatic;
+					};
+					A67FF08B1EF97036008E2489 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FH842TBZN3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A67FF07A1EF97036008E2489;
+					};
+					A67FF0961EF97036008E2489 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FH842TBZN3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A67FF07A1EF97036008E2489;
+					};
+				};
+			};
+			buildConfigurationList = A67FF0761EF97036008E2489 /* Build configuration list for PBXProject "Jessie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A67FF0721EF97036008E2489;
+			productRefGroup = A67FF07C1EF97036008E2489 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A67FF07A1EF97036008E2489 /* Jessie */,
+				A67FF08B1EF97036008E2489 /* JessieTests */,
+				A67FF0961EF97036008E2489 /* JessieUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A67FF0791EF97036008E2489 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67FF0831EF97036008E2489 /* Assets.xcassets in Resources */,
+				A67FF0861EF97036008E2489 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF08A1EF97036008E2489 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF0951EF97036008E2489 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A67FF0771EF97036008E2489 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67FF0811EF97036008E2489 /* ViewController.swift in Sources */,
+				A67FF07F1EF97036008E2489 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF0881EF97036008E2489 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67FF0911EF97036008E2489 /* JessieTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67FF0931EF97036008E2489 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67FF09C1EF97036008E2489 /* JessieUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A67FF08E1EF97036008E2489 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A67FF07A1EF97036008E2489 /* Jessie */;
+			targetProxy = A67FF08D1EF97036008E2489 /* PBXContainerItemProxy */;
+		};
+		A67FF0991EF97036008E2489 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A67FF07A1EF97036008E2489 /* Jessie */;
+			targetProxy = A67FF0981EF97036008E2489 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A67FF0841EF97036008E2489 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A67FF0851EF97036008E2489 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A67FF09E1EF97036008E2489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A67FF09F1EF97036008E2489 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		A67FF0A11EF97036008E2489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = Jessie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.Jessie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A67FF0A21EF97036008E2489 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = Jessie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.Jessie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A67FF0A41EF97036008E2489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = JessieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.JessieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jessie.app/Contents/MacOS/Jessie";
+			};
+			name = Debug;
+		};
+		A67FF0A51EF97036008E2489 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = JessieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.JessieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jessie.app/Contents/MacOS/Jessie";
+			};
+			name = Release;
+		};
+		A67FF0A71EF97036008E2489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = JessieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.JessieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Jessie;
+			};
+			name = Debug;
+		};
+		A67FF0A81EF97036008E2489 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FH842TBZN3;
+				INFOPLIST_FILE = JessieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.matviichuk.JessieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Jessie;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A67FF0761EF97036008E2489 /* Build configuration list for PBXProject "Jessie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67FF09E1EF97036008E2489 /* Debug */,
+				A67FF09F1EF97036008E2489 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A67FF0A01EF97036008E2489 /* Build configuration list for PBXNativeTarget "Jessie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67FF0A11EF97036008E2489 /* Debug */,
+				A67FF0A21EF97036008E2489 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A67FF0A31EF97036008E2489 /* Build configuration list for PBXNativeTarget "JessieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67FF0A41EF97036008E2489 /* Debug */,
+				A67FF0A51EF97036008E2489 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A67FF0A61EF97036008E2489 /* Build configuration list for PBXNativeTarget "JessieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67FF0A71EF97036008E2489 /* Debug */,
+				A67FF0A81EF97036008E2489 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A67FF0731EF97036008E2489 /* Project object */;
+}
