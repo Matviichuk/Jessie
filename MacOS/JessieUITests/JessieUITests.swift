@@ -2,7 +2,7 @@
 //  JessieUITests.swift
 //  JessieUITests
 //
-//  Created by Olexandr Matviichuk on 6/20/17.
+//  Created by Olexandr Matviichuk on 6/30/17.
 //  Copyright © 2017 Olexandr Matviichuk. All rights reserved.
 //
 

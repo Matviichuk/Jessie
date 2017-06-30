@@ -152,3 +152,4 @@ ENV/
 MacOS/Jessie.xcodeproj/project.xcworkspace/xcuserdata/olexandr.xcuserdatad/UserInterfaceState.xcuserstate
 MacOS/Jessie.xcodeproj/xcuserdata/olexandr.xcuserdatad/xcschemes/Jessie.xcscheme
 MacOS/Jessie.xcodeproj/xcuserdata/olexandr.xcuserdatad/xcschemes/xcschememanagement.plist
+*.entitlements
